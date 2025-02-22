@@ -1,53 +1,34 @@
 package com.example.sistem_anunturi_imobiliare;
+import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.Objects;
+@AllArgsConstructor  // Generează constructor cu toți parametrii
+@NoArgsConstructor   // Generează constructor fără parametri
+@Data               // Include @Getter, @Setter, @ToString, @EqualsAndHashCode
+@RequiredArgsConstructor
 
 public class Anunt {
     private String titlu;
     private double pret;
+    private Utilizator utilizator; // Referință către utilizator
+    private Imobil imobil; // Referință către imobil
 
-    public Anunt() {
+    //Prin constructor
+   /* @Autowired
+    public Anunt(Utilizator utilizator, Imobil imobil) {
+        this.utilizator = utilizator;
+        this.imobil = imobil;
+    }*/
+
+    //Prin setter
+    @Autowired
+    public void setUtilizator(Utilizator utilizator) {
+        this.utilizator = utilizator;
     }
 
-    public Anunt(String titlu, double pret) {
-        this.titlu = titlu;
-        this.pret = pret;
-    }
-
-    public String getTitlu() {
-        return titlu;
-    }
-
-    public void setTitlu(String titlu) {
-        this.titlu = titlu;
-    }
-
-    public double getPret() {
-        return pret;
-    }
-
-    public void setPret(double pret) {
-        this.pret = pret;
-    }
-
-    @Override
-    public String toString() {
-        return "Anunt{" +
-                "titlu='" + titlu + '\'' +
-                ", pret=" + pret +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Anunt anunt = (Anunt) o;
-        return Double.compare(pret, anunt.pret) == 0 && Objects.equals(titlu, anunt.titlu);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(titlu, pret);
+    @Autowired
+    public void setImobil(Imobil imobil) {
+        this.imobil = imobil;
     }
 }
