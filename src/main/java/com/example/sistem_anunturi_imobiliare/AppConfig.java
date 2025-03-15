@@ -1,5 +1,8 @@
 package com.example.sistem_anunturi_imobiliare;
 
+import com.example.sistem_anunturi_imobiliare.model.Anunt;
+import com.example.sistem_anunturi_imobiliare.model.Imobil;
+import com.example.sistem_anunturi_imobiliare.model.Utilizator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
